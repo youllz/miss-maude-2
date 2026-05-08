@@ -1,0 +1,365 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+
+
+:root {
+  /* =========================================
+       COULEURS NEUTRES (OKLCH)
+       Format : oklch(Luminosité Chroma Teinte)
+       Teinte (H) : 250 (Gris très légèrement bleuté/froid)
+       Chroma (C) : ~0.015 (Très peu saturé pour rester élégant)
+       ========================================= */
+
+  --color-white: oklch(1 0 0);
+  --color-black: oklch(0 0 0);
+
+  /* Échelle de 50 à 950 (Standard de l'industrie) */
+  --color-neutral-50: oklch(0.98 0.010 250);
+  /* Fonds de page clairs */
+  --color-neutral-100: oklch(0.95 0.012 250);
+  /* Fonds de composants (cartes) */
+  --color-neutral-200: oklch(0.90 0.015 250);
+  /* Bordures subtiles, états :hover */
+  --color-neutral-300: oklch(0.80 0.015 250);
+  /* Bordures plus marquées, UI inactif */
+  --color-neutral-400: oklch(0.70 0.015 250);
+  /* Placeholders de formulaires */
+  --color-neutral-500: oklch(0.60 0.015 250);
+  /* Texte secondaire clair, icônes */
+  --color-neutral-600: oklch(0.50 0.015 250);
+  /* Texte secondaire (méta-données) */
+  --color-neutral-700: oklch(0.40 0.015 250);
+  /* Corps de texte principal */
+  --color-neutral-800: oklch(0.30 0.015 250);
+  /* Sous-titres, texte fort */
+  --color-neutral-900: oklch(0.20 0.015 250);
+  /* Titres principaux, fonds sombres */
+  --color-neutral-950: oklch(0.15 0.015 250);
+  /* Quasi noir, très fort contraste */
+
+  /* =========================================
+       VARIABLES SÉMANTIQUES (L'astuce de pro)
+       ========================================= */
+  /* Au lieu d'appeler directement "neutral-700", on donne un rôle à la couleur */
+
+  --bg-primary: var(--color-white);
+  --bg-secondary: var(--color-neutral-50);
+
+  --border-light: var(--color-neutral-200);
+  --border-strong: var(--color-neutral-300);
+
+  --text-muted: var(--color-neutral-500);
+  --text-body: var(--color-neutral-700);
+  --text-heading: var(--color-neutral-900);
+  /* =========================================
+     TYPOGRAPHIE
+     ========================================= */
+
+  /* Familles de polices */
+  --font-sans: 'Geist Sans', sans-serif;
+  --font-serif: 'Melodrama', serif;
+  --font-serif-italic: 'Zodiak Italic', serif;
+  /* --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; */
+
+  /* Échelle de taille de texte (Base: 16px = 1rem) */
+  --text-xs: 0.75rem;
+  /* 12px - Mentions légales, petits labels */
+  --text-sm: 0.875rem;
+  /* 14px - Texte secondaire, métadonnées */
+  --text-base: 1rem;
+  /* 16px - Corps de texte par défaut */
+  --text-lg: 1.125rem;
+  /* 18px - Introduction, sous-titres mineurs */
+  --text-xl: 1.25rem;
+  /* 20px - H4 */
+  --text-2xl: 1.5rem;
+  /* 24px - H3 */
+  --text-3xl: 1.875rem;
+  /* 30px - H2 */
+  --text-4xl: 2.25rem;
+  /* 36px - H1 */
+  --text-5xl: 3rem;
+  /* 48px - Titres héros/bannières */
+
+  /* Graisses (Poids de la police) */
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-bold: 700;
+
+  /* Hauteur de ligne (Line-height) */
+  --leading-none: 1;
+  /* Pour les très gros titres */
+  --leading-tight: 1.25;
+  /* Pour les titres classiques */
+  --leading-normal: 1.5;
+  /* Pour les paragraphes (lisibilité) */
+  --leading-loose: 1.75;
+  /* Pour les articles longs */
+
+  /* =========================================
+     ESPACEMENT (Grille de 8px / 4px)
+     ========================================= */
+
+  /* Marges, paddings, gaps */
+  --space-1: 0.25rem;
+  /* 4px  - Espacements micro */
+  --space-2: 0.5rem;
+  /* 8px  - Espace entre une icône et du texte */
+  --space-3: 0.75rem;
+  /* 12px */
+  --space-4: 1rem;
+  /* 16px - Espacement standard (paddings boutons, etc.) */
+  --space-5: 1.25rem;
+  /* 20px */
+  --space-6: 1.5rem;
+  /* 24px - Marge entre paragraphes */
+  --space-8: 2rem;
+  /* 32px - Marge entre sections mineures */
+  --space-10: 2.5rem;
+  /* 40px */
+  --space-12: 3rem;
+  /* 48px - Padding de grandes cartes */
+  --space-16: 4rem;
+  /* 64px - Marge entre grandes sections */
+  --space-20: 5rem;
+  /* 80px */
+  --space-24: 6rem;
+  /* 96px - Marge très large (header/footer) */
+}
+
+
+/* @font-face {
+  font-family: 'Zodiak';
+  src: url('/fonts/Zodiak-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+} */
+
+/* @font-face {
+  font-family: 'Zodiak Italic';
+  src: url('/fonts/Zodiak-VariableItalic.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+} */
+
+@font-face {
+  font-family: 'Geist Sans';
+  src: url('/fonts/Geist-variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Melodrama';
+  src: url('/fonts/Melodrama.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+
+
+body {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-family: var(--font-sans);
+
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-black);
+}
+
+/* collection page */
+
+.coll-container {
+  margin-left: 20rem;
+  display: grid;
+  gap: var(--space-12);
+
+  @media (width < 600px) {
+    margin-left: 0;
+    padding-inline: var(--space-4);
+  }
+}
+
+
+
+.coll-img-container {
+  position: relative;
+  /* margin-top: var(--space-24); */
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(min(500px, 100%), 1fr));
+
+  p {
+    font-size: var(--text-xl);
+    line-height: var(--leading-normal);
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    padding-right: var(--space-2);
+    text-wrap: pretty;
+  }
+}
+
+.coll-label {
+  font-family: var(--font-serif);
+  font-size: clamp(var(--text-xl), var(--text-5xl), var(--text-5xl));
+  font-weight: var(--font-light);
+  opacity: 0;
+
+  transition: opacity 0.6 ease;
+  animation-duration: 3s;
+  animation-name: fade-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+/* html:has(dialog[open]) {
+  overflow: hidden;
+} */
