@@ -9,8 +9,8 @@
 </script>
 
 <div class="img-container">
-	<enhanced:img class="ukiyo" src={imgTrigger} />
-	<!-- <img class="ukiyo" src={imgTrigger} alt="" /> -->
+	<!-- <enhanced:img class="ukiyo" src={imgTrigger} /> -->
+	<img class="ukiyo" src={imgTrigger} alt="" />
 	<div class="rideau" class:rideau-out={isMounted}></div>
 </div>
 
