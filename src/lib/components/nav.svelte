@@ -3,6 +3,10 @@
 
 	const navLinks = [
 		{
+			url: '/',
+			label: 'Accueil'
+		},
+		{
 			url: '/collections',
 			label: 'collections'
 		},
@@ -32,6 +36,9 @@
 	</ul>
 
 	<ul class="page">
+		<li>
+			<a href={resolve('/')}>Accueil</a>
+		</li>
 		<li>
 			<a href={resolve('/collections')}>collections</a>
 		</li>

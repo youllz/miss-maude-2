@@ -150,8 +150,8 @@
 		}
 
 		.scale {
-			/* transform: scale(0) translateY(-40%) !important; */
-			display: none;
+			/* transform: scale(0) translateY(10%) !important; */
+			position: relative;
 		}
 	}
 

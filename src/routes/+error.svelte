@@ -66,7 +66,7 @@
 
 		span {
 			height: 2px;
-			width: 30px;
+			width: 50px;
 			background-color: var(--color-white);
 		}
 	}
