@@ -48,7 +48,7 @@
 		height: 2px;
 		align-self: flex-end;
 		margin-bottom: 10px;
-		background-color: var(--color-neutral-600);
+		background-color: var(--color-black);
 		transform: scaleX(1);
 		/* animation: scale-in 0.6s ease-in-out 0.6s forwards; */
 		will-change: transform;

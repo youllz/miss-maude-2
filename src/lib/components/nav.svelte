@@ -52,7 +52,6 @@
 
 <nav class="mobile-nav">
 	<div class="dialog-open_con">
-		<div class="square"></div>
 		<button class="dialog-open" command="show-modal" commandfor="mon-dialogue"> MENU </button>
 	</div>
 
@@ -93,18 +92,11 @@
 	</dialog>
 	<!-- <IndexDialog /> -->
 	<div class="coll-link">
-		<div class="square"></div>
 		<a href={resolve('/collections')}>INDEX</a>
 	</div>
 </nav>
 
 <style>
-	.square {
-		height: 10px;
-		width: 10px;
-		background-color: var(--color-neutral-600);
-	}
-
 	.dialog-open_con {
 		display: flex;
 		align-items: center;
@@ -223,13 +215,16 @@
 		border: none;
 		outline: none;
 		font-size: var(--text-base);
-		font-weight: var(--font-medium);
+		font-weight: var(--font-medium) !important;
 		mix-blend-mode: difference;
 		padding: 0;
 		margin: 0;
 		color: var(--color-white);
-		line-height: var(--leadind-none);
+		line-height: var(--leading-none);
 		align-self: center;
+		text-decoration: underline;
+		text-underline-offset: 4px;
+
 		/* text-box-trim: trim-both; */
 
 		&:focus {
@@ -249,12 +244,12 @@
 		margin-top: var(--space-24);
 
 		div {
-			height: 50px;
+			height: 41px;
 			overflow: hidden;
 		}
 
 		a {
-			font-size: var(--text-4xl);
+			font-size: var(--text-3xl);
 			text-transform: uppercase;
 			color: var(--color-white);
 			width: 100%;
@@ -299,12 +294,12 @@
 		li {
 			color: var(--color-white);
 			text-transform: uppercase;
-			font-size: var(--text-4xl);
+			font-size: var(--text-3xl);
 			height: 50px;
 			overflow: hidden;
 		}
 		a {
-			font-size: var(--text-4xl);
+			font-size: var(--text-3xl);
 			text-transform: uppercase;
 			color: var(--color-white);
 			width: 100%;
@@ -337,8 +332,11 @@
 
 		a {
 			color: var(--color-white);
-			font-size: var(--font-base);
+			font-size: var(--text-base);
 			font-weight: var(--font-medium);
+			text-decoration: underline;
+			text-underline-offset: 4px;
+			display: block;
 		}
 	}
 

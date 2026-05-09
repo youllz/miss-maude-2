@@ -4,6 +4,8 @@
 	import Nav from '$lib/components/nav.svelte';
 	import { page } from '$app/state';
 	import { resolve } from '$app/paths';
+	import { MediaQuery } from 'svelte/reactivity';
+	const mobile = new MediaQuery('width < 600px');
 
 	let { children } = $props();
 
@@ -43,25 +45,27 @@
 
 <Nav />
 <section>
-	<aside class:scale={page.url.pathname !== '/collections'}>
-		<div>
-			<h2>collections</h2>
-		</div>
-		<div class="links">
-			{#each links as link, idx (idx)}
-				<div class="link">
-					<a
-						href={resolve(link.url)}
-						onmouseenter={() => (collectionHover.current = link.label)}
-						onmouseleave={() => (collectionHover.current = '')}
-						class:active={page.url.pathname === link.url}
-					>
-						{link.label}
-					</a>
-				</div>
-			{/each}
-		</div>
-	</aside>
+	{#if mobile.current && page.url.pathname === '/collections/'}
+		<aside class:scale={page.url.pathname !== '/collections'}>
+			<div>
+				<h2>collections</h2>
+			</div>
+			<div class="links">
+				{#each links as link, idx (idx)}
+					<div class="link">
+						<a
+							href={resolve(link.url)}
+							onmouseenter={() => (collectionHover.current = link.label)}
+							onmouseleave={() => (collectionHover.current = '')}
+							class:active={page.url.pathname === link.url}
+						>
+							{link.label}
+						</a>
+					</div>
+				{/each}
+			</div>
+		</aside>
+	{/if}
 	{#key url}
 		<div class="img-container">
 			<!-- {#key url}
@@ -138,8 +142,12 @@
 	}
 
 	.scale {
-		position: fixed !important;
-		transform: scale(0.7) translateY(-40%) !important;
+		position: fixed;
+		transform: scale(0.7) translateY(-40%);
+	}
+
+	.hidden {
+		transform: scale(0.7) translateY(-40%) translateX(-100%);
 	}
 
 	@media (width < 600px) {
@@ -147,11 +155,6 @@
 			a {
 				font-size: calc(var(--text-5xl) * 1.5);
 			}
-		}
-
-		.scale {
-			/* transform: scale(0) translateY(10%) !important; */
-			position: relative;
 		}
 	}
 
