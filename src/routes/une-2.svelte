@@ -67,6 +67,57 @@
 
 		/* ========== Input Handling ========== */
 
+		// Touch input variables for mobile drag
+		let touchStartX = null;
+		let initialTouchX = 0;
+		let touchStartTime = 0;
+
+		// Touch start: save initial touch position and reset velocity
+		viewport.addEventListener(
+			'touchstart',
+			(e) => {
+				touchStartX = e.touches[0].clientX;
+				initialTouchX = e.touches[0].clientX; // Sauvegarde pour le calcul de l'inertie
+				touchStartTime = performance.now(); // Chronomètre
+				velocity = 0; // Arrête l'animation en cours dès qu'on touche l'écran
+			},
+			{ passive: true }
+		);
+
+		// Touch move: calculate movement delta and update position
+		viewport.addEventListener(
+			'touchmove',
+			(e) => {
+				if (touchStartX === null) return;
+				const dx = e.touches[0].clientX - touchStartX;
+
+				// On multiplie par 1.5 (ou plus) pour rendre le drag plus "nerveux" sur mobile
+				position -= dx * 1.5;
+
+				touchStartX = e.touches[0].clientX;
+			},
+			{ passive: true }
+		);
+
+		// Touch end: calculate velocity for momentum and reset start position
+		viewport.addEventListener('touchend', (e) => {
+			if (touchStartX !== null && e.changedTouches.length > 0) {
+				const finalTouchX = e.changedTouches[0].clientX;
+				const dx = finalTouchX - initialTouchX; // Distance totale du swipe
+				const dt = (performance.now() - touchStartTime) / 1000; // Durée du swipe
+
+				// Applique l'inertie exactement comme pour la souris sur desktop
+				if (dt > 0) {
+					let v = -(dx / dt) * 0.03;
+					const maxVelocity = 30;
+					velocity = Math.max(Math.min(v, maxVelocity), -maxVelocity);
+				}
+			}
+			touchStartX = null;
+		});
+
+		// ===========================
+
 		// Handle wheel scroll for desktop to add velocity
 		viewport.addEventListener(
 			'wheel',
@@ -78,7 +129,7 @@
 		);
 
 		// Touch input variables for mobile drag
-		let touchStartX = null;
+		// let touchStartX = null;
 
 		// Touch start: save initial touch position
 		viewport.addEventListener(

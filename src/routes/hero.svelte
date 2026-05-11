@@ -34,6 +34,7 @@
 		text-align: center;
 		text-transform: uppercase;
 		font-weight: var(--font-medium);
+		line-height: 0.8;
 	}
 
 	section {
@@ -69,5 +70,11 @@
 		aspect-ratio: 1;
 		object-fit: cover;
 		object-position: top;
+	}
+
+	@media (width < 600px) {
+		video {
+			height: 70% !important;
+		}
 	}
 </style>

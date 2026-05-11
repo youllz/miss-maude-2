@@ -1,106 +1,67 @@
 <script>
-	import { resolve } from '$app/paths';
-
-	const images = [
-		'/images/OBARA/V-1/image-45.avif',
-		'/images/OBARA/V-2/image-47.avif',
-		'/images/OBARA/V-3/image-49.avif',
-		'/images/OBARA/V-4/image-51.avif'
-	];
 </script>
 
-<section>
-	<div class="video-container">
+<section class=".scroll-section">
+	<div class="texts-container">
+		<div>
+			<span>Célébration</span>
+			<figure>
+				<img src="/images/MALAIKA/V-1/image-8.avif" alt="" />
+			</figure>
+			<span>de</span> <span>l’AfroLux</span>
+			<figure>
+				<img src="/images/SELENE/V-1/image-54.avif" alt="" />
+			</figure>
+			<span> Mandingue </span>
+			<span>avec élégance</span>
+			<figure>
+				<img src="/images/AYANA/V-3/image-7.avif" alt="" />
+			</figure>
+			<span> et </span>
+			<span>raffinement.</span>
+		</div>
+		<!-- Célébration
 		<figure>
-			<div class="title">
-				<span>Découvrer la collection</span>
-				<h2>obara</h2>
-			</div>
-			<video src="/videos/vid-1.mp4" autoplay loop muted class=""></video>
+			<img src="/images/MALAIKA/V-1/image-8.avif" alt="" />
 		</figure>
-	</div>
-	<div class="img-container">
-		<div class="img-container__left">
-			<p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam unde beatae neque
-				magnam? Hic eius nihil minus quod porro ab fugiat ut quam exercitationem ex.
-			</p>
-			<a href={resolve('/')}> Voir plus </a>
-		</div>
-		<div class="img-container__right">
-			{#each images as image, idx (idx)}
-				<figure>
-					<img class="ukiyo" src={image} alt="La collection OBARA" />
-				</figure>
-			{/each}
-		</div>
+		de l’AfroLux Mandingue
+		<figure>
+			<img src="/images/MALAIKA/V-1/image-8.avif" alt="" />
+		</figure>
+		avec élégance
+		<figure>
+			<img src="/images/MALAIKA/V-1/image-8.avif" alt="" />
+		</figure>
+		et raffinement. -->
 	</div>
 </section>
 
 <style>
+	div {
+		font-size: clamp(50px, calc(9vw + 0.1rem), 10rem);
+		font-family: var(--font-serif);
+		text-transform: uppercase;
+		font-weight: var(--font-medium);
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.texts-container {
+		width: 100%;
+	}
+
 	section {
-		min-height: 100dvh;
-		padding-inline: var(--space-4);
-	}
-
-	.video-container {
-		position: relative;
+		margin-top: var(--space-24);
+		min-height: 110dvh;
 		display: flex;
-		flex-direction: column;
-		gap: var(--space-4);
 		align-items: center;
-		padding-block: calc(var(--space-24) * 3);
-	}
-
-	.title {
-		display: flex;
 		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		position: absolute;
-		top: -80px;
-		left: 50%;
-		transform: translateX(-50%);
-		z-index: 1;
-		mix-blend-mode: difference;
-
-		span {
-			font-size: var(--text-xl);
-			text-align: center;
-			color: var(--color-white);
-		}
-
-		h2 {
-			font-size: clamp(7rem, calc(9dvw + 1rem), 9rem);
-			font-family: var(--font-serif);
-			text-transform: uppercase;
-			text-align: center;
-			color: var(--color-white);
-		}
+		padding: var(--space-8);
 	}
 
 	figure {
-		position: relative;
-		video {
-			width: 500px !important;
-			object-fit: cover;
-			aspect-ratio: 1;
-		}
-	}
-
-	.img-container {
-		display: flex;
-		padding-inline: var(--space-4);
-		width: 100%;
-		max-width: 1200px;
-		margin-inline: auto;
-		align-items: flex-start;
-		gap: var(--space-8);
-
-		figure {
-			height: 500px;
-			width: 500px;
-		}
+		width: clamp(50px, calc(9vw + 0.1rem), 10rem);
+		aspect-ratio: 1;
 
 		img {
 			width: 100%;
@@ -109,49 +70,27 @@
 		}
 	}
 
-	.img-container__left {
-		flex-grow: 1;
-		position: sticky;
-		top: 10%;
-
-		p {
-			max-width: 400px;
-			width: 100%;
-			text-wrap: balance;
-			line-height: var(--leading-normal);
-			font-size: var(--text-xl);
-			font-family: Melodrama;
-			font-weight: var(--font-medium);
-		}
-		a {
-			font-size: var(--text-xl);
-			font-weight: var(--font-medium);
-			text-transform: uppercase;
-			color: var(--color-black);
-			margin-top: var(--space-8);
-			display: block;
-			text-decoration: underline;
-			text-underline-offset: var(--space-2);
-		}
+	.texts-container span {
+		display: inline;
+		color: hsla(0, 0%, 0%, 0.58);
+		opacity: 1;
+		background-clip: text;
+		-webkit-background-clip: text;
+		background-repeat: no-repeat;
+		background-size: 0% 100%;
+		background-image: linear-gradient(180deg, #000, #000000);
+		animation: scroll-reveal 3.5s linear forwards;
+		animation-timeline: view(y);
+		animation-range-start: cover 5.5vh;
+		animation-range-end: cover 80.5vh;
+		transition:
+			background-size 0.8s ease,
+			opacity 0.2s ease;
 	}
-	.img-container__right {
-		flex-grow: 1;
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-8);
-
-		figure:nth-child(1) {
-			align-self: flex-end;
-		}
-		figure:nth-child(2) {
-			align-self: center;
-		}
-		figure:nth-child(3) {
-			align-self: center;
-		}
-		figure:nth-child(3) {
-			align-self: flex-end;
+	@keyframes scroll-reveal {
+		to {
+			background-size: 100% 100%;
+			opacity: 1;
 		}
 	}
 </style>

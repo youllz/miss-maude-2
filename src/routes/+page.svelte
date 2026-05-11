@@ -2,6 +2,7 @@
 	import Hero from './hero.svelte';
 	import Une2 from './une-2.svelte';
 	import { domainName } from '$lib/index';
+	import Une from './une.svelte';
 </script>
 
 <svelte:head>
@@ -24,6 +25,7 @@
 </svelte:head>
 
 <Hero />
+<Une />
 <Une2 />
 <!-- <Sect2 /> -->
 <!-- <Une /> -->
