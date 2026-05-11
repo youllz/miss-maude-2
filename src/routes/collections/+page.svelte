@@ -2,6 +2,8 @@
 	import { collectionHover } from '$lib/state.svelte';
 	import { fade } from 'svelte/transition';
 	import { circOut } from 'svelte/easing';
+	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
 	import { domainName } from '$lib';
 
 	const ayana = [
@@ -245,6 +247,29 @@
 	{/each}
 </div>
 
+<!-- collections nav -->
+<div class="links-container">
+	<aside>
+		<div>
+			<h2>collections</h2>
+		</div>
+		<div class="links">
+			{#each links as link, idx (idx)}
+				<div class="link">
+					<a
+						href={resolve(link.url)}
+						onmouseenter={() => (collectionHover.current = link.label)}
+						onmouseleave={() => (collectionHover.current = '')}
+						class:active={page.url.pathname === link.url}
+					>
+						{link.label}
+					</a>
+				</div>
+			{/each}
+		</div>
+	</aside>
+</div>
+
 <style>
 	.collection-img {
 		height: 100dvh;
@@ -257,6 +282,10 @@
 		display: grid;
 		grid-template-columns: repeat(7, 1fr);
 		grid-template-rows: repeat(9, auto);
+
+		@media (width < 600px) {
+			display: none;
+		}
 	}
 
 	figure {
@@ -271,6 +300,72 @@
 		display: block;
 		object-fit: contain;
 		transform-origin: bottom;
+	}
+
+	.links-container {
+		min-height: 120dvh;
+		display: none;
+
+		@media (width < 600px) {
+			display: block;
+		}
+	}
+
+	aside {
+		max-width: 20rem;
+		width: 100%;
+		min-height: 120dvh;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		gap: var(--space-4);
+		transform-origin: left;
+		padding-inline: var(--space-8);
+		transition: transform 0.6s ease-in-out;
+		z-index: 2;
+
+		@media (width < 600px) {
+			padding-inline: var(--space-4);
+		}
+
+		.links {
+			display: flex;
+			flex-direction: column;
+			gap: var(--space-2);
+		}
+
+		.link {
+			min-height: fit-content;
+			overflow: hidden;
+		}
+
+		h2 {
+			font-size: var(--text-base);
+			text-transform: uppercase;
+			color: var(--color-neutral-500);
+		}
+
+		a {
+			font-family: var(--font-serif);
+			display: inline-block;
+			font-size: clamp(3rem, 6dvw + 0.1rem, 8dvw);
+			text-transform: uppercase;
+			font-weight: var(--font-medium);
+			transform: translateY(100%);
+			will-change: transform;
+			animation: slide-in 0.6s ease 0.2s forwards;
+		}
+	}
+
+	.scale {
+		position: fixed;
+		transform: scale(0.7) translateY(-40%);
+	}
+
+	@keyframes slide-in {
+		to {
+			transform: translateY(0%);
+		}
 	}
 
 	/* ayana */

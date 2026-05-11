@@ -56,7 +56,11 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+
 		padding: var(--space-8);
+		@media (width < 600px) {
+			min-height: 70dvh;
+		}
 	}
 
 	figure {

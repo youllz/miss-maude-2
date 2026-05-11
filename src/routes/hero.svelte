@@ -42,8 +42,8 @@
 		height: 100dvh;
 		width: 100%;
 		display: flex;
-		align-items: center;
-		justify-content: center;
+		/* 	align-items: center; */
+		/* justify-content: center; */
 		flex-direction: column;
 		z-index: 20;
 		top: 0;
@@ -74,7 +74,8 @@
 
 	@media (width < 600px) {
 		video {
-			height: 70% !important;
+			height: 80% !important;
+			aspect-ratio: none;
 		}
 	}
 </style>

@@ -14,7 +14,7 @@ const preloadImages = (selector = 'img') => {
 	});
 };
 
-const domainName = "https://tonsite.com"
+const domainName = "https://miss-maude-hjcfb.sevalla.page"
 
 
 const collectionData = {
